@@ -14,6 +14,8 @@ use DB;
 use App\Models\Users\Subjects;
 use App\Models\Users\User;
 
+use App\Http\Requests\RegisterRequest;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -35,10 +37,11 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         DB::beginTransaction();
         try{
+            $validated = $request->validated();
             $old_year = $request->old_year;
             $old_month = $request->old_month;
             $old_day = $request->old_day;
