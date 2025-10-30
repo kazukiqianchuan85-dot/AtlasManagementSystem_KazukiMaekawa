@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('users')->insert([
+         DB::table('users')->insertOrIgnore([
             [
                 'over_name'       => '山田',
                 'under_name'      => '太郎',
@@ -26,6 +26,19 @@ class UsersTableSeeder extends Seeder
                 'birth_day'       => '2000-01-01',
                 'role'            => 1,
                 'password'        => Hash::make('password'),
+                'created_at'      => now(),
+                'updated_at'      => now(),
+            ],
+            [
+                'over_name'       => '山田',
+                'under_name'      => '次郎',
+                'over_name_kana'  => 'ヤマダ',
+                'under_name_kana' => 'ジロウ',
+                'mail_address'    => 'taro2@example.com',
+                'sex'             => 1,
+                'birth_day'       => '2000-01-01',
+                'role'            => 4,
+                'password'        => Hash::make('taro2123'),
                 'created_at'      => now(),
                 'updated_at'      => now(),
             ],

@@ -23,8 +23,15 @@
                 <p><a href="{{ route('top.show') }}">トップ</a></p>
                 <p><a href="/logout">ログアウト</a></p>
                 <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
-                <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                {{-- ✅ 講師アカウントのみ表示 --}}
+                @php
+                    $role = Auth::user()->role;
+                @endphp
+                @if(in_array($role, [1, 2, 3]))
+                    <p><a href="{{ route('calendar.admin.show', ['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+                    <p><a href="{{ route('calendar.admin.setting', ['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                @endif
+                {{-- ✅ ここまで講師限定 --}}
                 <p><a href="{{ route('post.show') }}">掲示板</a></p>
                 <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
             </div>
