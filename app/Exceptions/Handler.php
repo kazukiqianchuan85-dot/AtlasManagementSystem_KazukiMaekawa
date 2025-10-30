@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -51,5 +52,19 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    /* セッション切れの時の挙動をここで制御 */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        // APIリクエストの場合はJSONで返す
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Unauthenticated.'], 401);
+        }
+
+        // 通常のWebアクセス時はログイン画面へリダイレクト
+        return redirect()
+            ->route('loginView') // ← ルート名「loginView」を使用
+            ->with('error', 'セッションが切れました。もう一度ログインしてください。');
     }
 }
