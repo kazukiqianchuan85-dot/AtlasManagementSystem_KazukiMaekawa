@@ -57,18 +57,44 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
-    public function postEdit(Request $request){
-        Post::where('id', $request->post_id)->update([
+    // public function postEdit(Request $request){
+    //     Post::where('id', $request->post_id)->update([
+    //         'post_title' => $request->post_title,
+    //         'post' => $request->post_body,
+    //     ]);
+    //     return redirect()->route('post.detail', ['id' => $request->post_id]);
+    // }
+
+    public function postEdit(PostFormRequest $request)
+    {
+        $post = Post::findOrFail($request->post_id);
+        if ($post->user_id !== Auth::id()) {
+            abort(403, 'この投稿を編集する権限がありません。');
+        }
+        $post->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,
         ]);
-        return redirect()->route('post.detail', ['id' => $request->post_id]);
+        return redirect()
+            ->route('post.detail', ['id' => $post->id])
+            ->with('success', '投稿を編集しました。');
     }
 
-    public function postDelete($id){
-        Post::findOrFail($id)->delete();
-        return redirect()->route('post.show');
+    // public function postDelete($id){
+    //     Post::findOrFail($id)->delete();
+    //     return redirect()->route('post.show');
+    // }
+    public function postDelete($id)
+{
+    $post = Post::findOrFail($id);
+    if ($post->user_id !== Auth::id()) {
+        abort(403, 'この投稿を削除する権限がありません。');
     }
+    $post->delete();
+    return redirect()
+        ->route('post.show')
+        ->with('success', '投稿を削除しました。');
+}
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');

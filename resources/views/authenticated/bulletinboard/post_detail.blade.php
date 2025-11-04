@@ -6,10 +6,17 @@
         <div class="detail_inner_head">
           <div>
           </div>
-          <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
-          </div>
+          {{-- 自分の投稿にのみ編集・削除ボタン表示 --}}
+          @if (Auth::id() === $post->user_id)
+            <div>
+              <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+              <button type="button"
+                      class="btn btn-danger delete-modal-open"
+                      data-post-id="{{ $post->id }}">
+                削除
+              </button>
+            </div>
+          @endif
         </div>
 
         <div class="contributor d-flex">
@@ -72,4 +79,35 @@
     </form>
   </div>
 </div>
+{{-- 削除確認モーダル --}}
+<div class="modal js-delete-modal">
+  <div class="modal__bg js-delete-modal-close"></div>
+  <div class="modal__content text-center">
+    <p>この投稿を削除してもよろしいですか？</p>
+
+    <div class="mt-3">
+      <form method="GET" id="deleteForm">
+        @csrf
+        <button type="button" class="btn btn-secondary js-delete-modal-close">キャンセル</button>
+        <button type="submit" class="btn btn-danger">削除する</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  // 削除モーダルを開く
+  $('.delete-modal-open').on('click', function() {
+    let postId = $(this).data('post-id');
+    // フォームのactionを動的にセット
+    $('#deleteForm').attr('action', '/bulletin_board/delete/' + postId);
+    $('.js-delete-modal').fadeIn();
+  });
+
+  // モーダルを閉じる
+  $('.js-delete-modal-close').on('click', function() {
+    $('.js-delete-modal').fadeOut();
+  });
+</script>
 </x-sidebar>
