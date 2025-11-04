@@ -11,6 +11,7 @@ use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
+use App\Http\Requests\CommentRequest;
 use Auth;
 
 class PostsController extends Controller
@@ -84,28 +85,38 @@ class PostsController extends Controller
     //     Post::findOrFail($id)->delete();
     //     return redirect()->route('post.show');
     // }
-    public function postDelete($id)
-{
-    $post = Post::findOrFail($id);
-    if ($post->user_id !== Auth::id()) {
-        abort(403, 'この投稿を削除する権限がありません。');
+        public function postDelete($id)
+    {
+        $post = Post::findOrFail($id);
+        if ($post->user_id !== Auth::id()) {
+            abort(403, 'この投稿を削除する権限がありません。');
+        }
+        $post->delete();
+        return redirect()
+            ->route('post.show')
+            ->with('success', '投稿を削除しました。');
     }
-    $post->delete();
-    return redirect()
-        ->route('post.show')
-        ->with('success', '投稿を削除しました。');
-}
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
-    public function commentCreate(Request $request){
+    // public function commentCreate(Request $request){
+    //     PostComment::create([
+    //         'post_id' => $request->post_id,
+    //         'user_id' => Auth::id(),
+    //         'comment' => $request->comment
+    //     ]);
+    //     return redirect()->route('post.detail', ['id' => $request->post_id]);
+    // }
+    public function commentCreate(CommentRequest $request)
+    {
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
             'comment' => $request->comment
         ]);
+
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
