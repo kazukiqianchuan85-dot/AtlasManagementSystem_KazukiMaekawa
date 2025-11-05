@@ -11,6 +11,7 @@ class Post extends Model
 
     protected $fillable = [
         'user_id',
+        'post_category_id',
         'post_title',
         'post',
     ];
@@ -25,6 +26,12 @@ class Post extends Model
 
     public function subCategories(){
         // リレーションの定義
+        return $this->belongsToMany(
+        \App\Models\Categories\SubCategory::class,
+        'post_sub_categories', // 中間テーブル名
+        'post_id',             // このモデル側のカラム
+        'sub_category_id'      // 関連モデル側のカラム
+    );
     }
 
     public function likes(){
