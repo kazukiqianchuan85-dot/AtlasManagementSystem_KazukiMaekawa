@@ -41,7 +41,19 @@
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
       <ul>
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+          <li class="main_categories" category_id="{{ $category->id }}">
+            <strong>{{ $category->main_category }}</strong>
+            <ul class="ml-3">
+              @foreach($category->subCategories as $sub)
+                <li>
+                  <form action="{{ route('post.show') }}" method="get" style="display:inline;">
+                    <input type="hidden" name="category_word" value="{{ $sub->id }}">
+                    <button type="submit" class="btn btn-link p-0 m-0 text-left">{{ $sub->sub_category }}</button>
+                  </form>
+                </li>
+              @endforeach
+            </ul>
+          </li>
         @endforeach
       </ul>
     </div>
