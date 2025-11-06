@@ -22,23 +22,18 @@ class PostsController extends Controller
         $like = new Like;
         $post_comment = new Post;
 
-        // ベースクエリ（リレーション付き）
         $query = Post::with('user', 'postComments', 'likes', 'subCategories');
 
-        // 🔍① キーワード検索（サブカテゴリ完全一致 or タイトル/本文あいまい）
         if (!empty($request->keyword)) {
             $keyword = $request->keyword;
 
-            // サブカテゴリ名が完全一致するかチェック
             $sub = SubCategory::where('sub_category', $keyword)->first();
 
             if ($sub) {
-                // サブカテゴリ完全一致 → 関連投稿のみ取得
                 $query->whereHas('subCategories', function ($q) use ($sub) {
                     $q->where('sub_categories.id', $sub->id);
                 });
             } else {
-                // タイトル or 本文のあいまい検索
                 $query->where(function ($q) use ($keyword) {
                     $q->where('post_title', 'like', "%{$keyword}%")
                     ->orWhere('post', 'like', "%{$keyword}%");
@@ -46,7 +41,6 @@ class PostsController extends Controller
             }
         }
 
-        // 🔍④ サブカテゴリクリック時
         if (!empty($request->category_word)) {
             $query->whereHas('subCategories', function ($q) use ($request) {
                 $q->where('sub_categories.id', $request->category_word);
