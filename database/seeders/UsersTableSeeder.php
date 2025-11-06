@@ -42,6 +42,19 @@ class UsersTableSeeder extends Seeder
                 'created_at'      => now(),
                 'updated_at'      => now(),
             ],
+            [
+                'over_name'       => '鈴木',
+                'under_name'      => 'りゅう',
+                'over_name_kana'  => 'スズキ',
+                'under_name_kana' => 'リュウ',
+                'mail_address'    => 'suzuki@example.com',
+                'sex'             => 2,
+                'birth_day'       => '2000-01-01',
+                'role'            => 2,
+                'password'        => Hash::make('suzuki123'),
+                'created_at'      => now(),
+                'updated_at'      => now(),
+            ],
         ]);
     }
 }
