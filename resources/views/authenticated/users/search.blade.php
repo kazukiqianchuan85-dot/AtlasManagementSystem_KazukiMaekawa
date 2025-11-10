@@ -94,17 +94,17 @@
               <option value="4" class="">生徒</option>
             </select>
           </div>
-          <div class="selected_engineer">
-            <label>選択科目</label><br>
-            <div class="subject-list">
-              @foreach($subjects->unique('subject') as $subject)
-                <div class="subject-item">
-                  <label>
-                    <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
-                    {{ $subject->subject }}
-                  </label>
-                </div>
-              @endforeach
+        <div class="selected_engineer">
+          <label>選択科目</label><br>
+          <div class="subject-list">
+            @foreach($subjects->unique('subject') as $subject)
+              <div class="subject-item">
+                <label>
+                  <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
+                  {{ $subject->subject }}
+                </label>
+              </div>
+            @endforeach
           </div>
         </div>
       </div>

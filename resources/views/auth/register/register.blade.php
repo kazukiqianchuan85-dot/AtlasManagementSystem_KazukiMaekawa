@@ -208,6 +208,22 @@
     </div>
   </form>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+<script>
+$(function() {
+  $('.role').on('change', function() {
+    const roleValue = $(this).val();
+
+    if (roleValue == 4) {
+      $('.select_teacher').removeClass('d-none');
+    } else {
+      $('.select_teacher').addClass('d-none');
+      $('.select_teacher input[type="checkbox"]').prop('checked', false);
+    }
+  });
+});
+</script>
 </x-guest-layout>
