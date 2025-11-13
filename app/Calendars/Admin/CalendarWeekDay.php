@@ -24,23 +24,34 @@ class CalendarWeekDay{
   }
 
   function dayPartCounts($ymd){
-    $html = [];
-    $html[] = '<div class="text-left" style="font-size:12px;">';
+      $html = [];
+      $html[] = '<div class="text-left" style="font-size:12px;">';
 
-    for ($part = 1; $part <= 3; $part++) {
-        $reserveSetting = ReserveSettings::with('users')
-            ->where('setting_reserve', $ymd)
-            ->where('setting_part', $part)
-            ->first();
+      for ($part = 1; $part <= 3; $part++) {
 
-        $reservedCount = $reserveSetting ? $reserveSetting->users->count() : 0;
+          $reserveSetting = ReserveSettings::with('users')
+              ->where('setting_reserve', $ymd)
+              ->where('setting_part', $part)
+              ->first();
 
-        $html[] = '<p class="day_part m-0 pt-1" style="color:#333;">'
-                .$part.'部　'.$reservedCount.'</p>';
-    }
+          $reservedCount = $reserveSetting ? $reserveSetting->users->count() : 0;
 
-    $html[] = '</div>';
-    return implode("", $html);
+          $url = route('calendar.admin.detail', ['date' => $ymd, 'part' => $part]);
+
+
+          $html[] =
+              '<p class="day_part m-0 pt-1">'.
+
+                  '<a href="'.$url.'" style="color:#0d6efd; text-decoration:none; font-weight:bold;">'.
+                      $part.'部'.
+                  '</a>'.
+
+                  '　<span style="color:#333;">'.$reservedCount.'</span>'.
+              '</p>';
+      }
+
+      $html[] = '</div>';
+      return implode("", $html);
   }
 
 
