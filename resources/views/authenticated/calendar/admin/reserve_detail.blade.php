@@ -1,19 +1,37 @@
 <x-sidebar>
-<div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
-  <div class="w-50 m-auto h-75">
-    <p><span>日</span><span class="ml-3">部</span></p>
-    <div class="h-75 border">
-      <table class="">
-        <tr class="text-center">
-          <th class="w-25">ID</th>
-          <th class="w-25">名前</th>
-        </tr>
-        <tr class="text-center">
-          <td class="w-25"></td>
-          <td class="w-25"></td>
-        </tr>
-      </table>
+    <div class="pt-5" style="background:#ECF1F6; min-height:100vh;">
+        <h2 class="text-center mb-4">＜スクール予約詳細画面＞</h2>
+
+        <div class="w-50 m-auto p-4 bg-white border" style="border-radius: 5px;">
+
+            {{-- 日付 + 部数 --}}
+            <p class="mb-3">
+                <span class="fw-bold">{{ $date }}　{{ $part }}部</span>
+            </p>
+
+            {{-- テーブル --}}
+            <table class="table table-bordered bg-white">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名前</th>
+                        <th>場所</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($reservePersons as $reserve)
+                        @foreach($reserve->users as $user)
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->over_name }} {{ $user->under_name }}</td>
+                                <td>リモート</td>
+                            </tr>
+                        @endforeach
+                    @endforeach
+                </tbody>
+            </table>
+
+        </div>
     </div>
-  </div>
-</div>
 </x-sidebar>
