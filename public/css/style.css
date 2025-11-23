@@ -18,7 +18,7 @@ li {
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 180px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
@@ -434,4 +434,26 @@ li {
   color: red;
   font-size: 12px;
   margin-bottom: 2px;
+}
+
+/* -----------------------------
+   サイドバーアイコン
+----------------------------- */
+.sidebar p {
+  padding: 12px 10px;
+}
+
+.sidebar p a {
+  display: flex;
+  align-items: center;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.side-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
 }

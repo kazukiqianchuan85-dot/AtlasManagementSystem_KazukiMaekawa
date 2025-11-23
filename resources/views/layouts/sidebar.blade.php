@@ -20,21 +20,52 @@
     <body class="all_content">
         <div class="d-flex">
             <div class="sidebar">
-                <p><a href="{{ route('top.show') }}">トップ</a></p>
-                <p><a href="/logout">ログアウト</a></p>
-                <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
-                {{-- ✅ 講師アカウントのみ表示 --}}
-                @php
-                    $role = Auth::user()->role;
-                @endphp
+                <p>
+                    <a href="{{ route('top.show') }}">
+                        <img src="{{ asset('image/home.png') }}" class="side-icon"> マイページ
+                    </a>
+                </p>
+
+                <p>
+                    <a href="/logout">
+                        <img src="{{ asset('image/logout.png') }}" class="side-icon"> ログアウト
+                    </a>
+                </p>
+
+                <p>
+                    <a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">
+                        <img src="{{ asset('image/calendar.png') }}" class="side-icon"> スクール予約
+                    </a>
+                </p>
+
+                {{-- 講師のみ --}}
+                @php $role = Auth::user()->role; @endphp
                 @if(in_array($role, [1, 2, 3]))
-                    <p><a href="{{ route('calendar.admin.show', ['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                    <p><a href="{{ route('calendar.admin.setting', ['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                    <p>
+                        <a href="{{ route('calendar.admin.show', ['user_id' => Auth::id()]) }}">
+                            <img src="{{ asset('image/check.png') }}" class="side-icon"> スクール予約確認
+                        </a>
+                    </p>
+                    <p>
+                        <a href="{{ route('calendar.admin.setting', ['user_id' => Auth::id()]) }}">
+                            <img src="{{ asset('image/register.png') }}" class="side-icon"> スクール枠登録
+                        </a>
+                    </p>
                 @endif
-                {{-- ✅ ここまで講師限定 --}}
-                <p><a href="{{ route('post.show') }}">掲示板</a></p>
-                <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+
+                <p>
+                    <a href="{{ route('post.show') }}">
+                        <img src="{{ asset('image/board.png') }}" class="side-icon"> 掲示板
+                    </a>
+                </p>
+
+                <p>
+                    <a href="{{ route('user.show') }}">
+                        <img src="{{ asset('image/search.png') }}" class="side-icon"> ユーザー検索
+                    </a>
+                </p>
             </div>
+
             <div class="main-container">
                 {{ $slot }}
             </div>
