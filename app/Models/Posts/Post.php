@@ -41,4 +41,11 @@ class Post extends Model
     public function commentCounts($post_id){
         return Post::with('postComments')->find($post_id)->postComments();
     }
+
+    public function isLikedByUser()
+    {
+        return $this->likes()
+            ->where('like_user_id', auth()->id())
+            ->exists();
+    }
 }

@@ -22,7 +22,8 @@ class PostsController extends Controller
         $like = new Like;
         $post_comment = new Post;
 
-        $query = Post::with('user', 'postComments', 'likes', 'subCategories');
+        $query = Post::with('user', 'postComments', 'subCategories')
+                    ->withCount('likes');
 
         if (!empty($request->keyword)) {
             $keyword = $request->keyword;
