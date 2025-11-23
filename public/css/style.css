@@ -277,3 +277,161 @@ li {
 .subject_inner {
   display: none;
 }
+
+/* -----------------------------
+  ログイン画面
+----------------------------- */
+
+.login-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: #ECF1F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-logo {
+  margin-bottom: 30px;
+}
+
+.login-logo-img {
+  width: 180px;
+}
+
+.login-box {
+  width: 420px;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+}
+
+.login-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-input-wrap {
+  border-bottom: 2px solid #1a73e8;
+  width: 100%;
+}
+
+.login-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px 3px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.login-btn {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-register-link {
+  color: #1a73e8;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* -----------------------------
+  新規登録画面
+----------------------------- */
+
+.register-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: #ECF1F6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-box {
+  width: 480px;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+}
+
+.register-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 18px;
+  display: block;
+}
+
+.register-input-wrap {
+  border-bottom: 2px solid #1a73e8;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.register-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 7px 2px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.register-radio-area label,
+.register-radio-area input {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.register-select-area {
+  margin-top: 5px;
+}
+
+.register-select-area select {
+  margin-right: 5px;
+}
+
+.register-btn {
+  width: 100%;
+  margin-top: 30px;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-btn-wrap {
+  text-align: right;
+}
+
+.register-login-link {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  color: #1a73e8;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 2px;
+}

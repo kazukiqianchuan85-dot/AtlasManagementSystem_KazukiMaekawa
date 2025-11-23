@@ -1,30 +1,35 @@
 <x-guest-layout>
-  <form action="{{ route('loginPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="border vh-50 w-25">
-        <div class="w-75 m-auto pt-5">
-          <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
-          <div class="border-bottom border-primary w-100">
-            <input type="text" class="w-100 border-0" name="mail_address">
-          </div>
+    <div class="login-wrapper">
+
+        {{-- ロゴ --}}
+        <div class="login-logo">
+            <img src="{{ asset('image/atlas-black.png') }}" alt="Atlas Logo" class="login-logo-img">
         </div>
-        <div class="w-75 m-auto pt-5">
-          <label class="d-block m-0" style="font-size:13px;">パスワード</label>
-          <div class="border-bottom border-primary w-100">
-            <input type="password" class="w-100 border-0" name="password">
-          </div>
+
+        {{-- ボックス --}}
+        <div class="login-box">
+            <form action="{{ route('loginPost') }}" method="POST">
+                @csrf
+
+                <label class="login-label">メールアドレス</label>
+                <div class="login-input-wrap">
+                    <input type="text" class="login-input" name="mail_address">
+                </div>
+
+                <label class="login-label mt-4">パスワード</label>
+                <div class="login-input-wrap">
+                    <input type="password" class="login-input" name="password">
+                </div>
+
+                <div class="text-right mt-4">
+                    <input type="submit" class="login-btn" value="ログイン">
+                </div>
+
+                <div class="text-center mt-3">
+                    <a href="{{ route('registerView') }}" class="login-register-link">新規登録はこちら</a>
+                </div>
+
+            </form>
         </div>
-        <div class="text-right m-3">
-          <input type="submit" class="btn btn-primary" value="ログイン">
-        </div>
-        <div class="text-center">
-          <a href="{{ route('registerView') }}">新規登録</a>
-        </div>
-      </div>
-      {{ csrf_field() }}
     </div>
-  </form>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
 </x-guest-layout>
