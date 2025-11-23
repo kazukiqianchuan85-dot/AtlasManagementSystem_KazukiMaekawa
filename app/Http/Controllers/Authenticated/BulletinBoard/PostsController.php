@@ -153,13 +153,14 @@ class PostsController extends Controller
     {
         $request->validate([
             'main_category_id' => 'required|exists:main_categories,id',
-            'sub_category_name' => 'required|string|max:100',
+            'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
         ], [
             'main_category_id.required' => 'メインカテゴリーを選択してください。',
             'main_category_id.exists' => '選択したメインカテゴリーが無効です。',
             'sub_category_name.required' => 'サブカテゴリー名を入力してください。',
             'sub_category_name.string' => 'サブカテゴリー名は文字列で入力してください。',
             'sub_category_name.max' => 'サブカテゴリー名は100文字以内で入力してください。',
+            'sub_category_name.unique'   => '同じ名前のサブカテゴリーは登録できません。',
         ]);
 
         \App\Models\Categories\SubCategory::create([
