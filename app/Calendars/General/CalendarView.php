@@ -51,7 +51,6 @@ class CalendarView{
         $html[] = $day->render();
 
         if(!$isCurrentMonth){
-            $html[] = '<input type="hidden" name="getData[]" value="'.$day->everyDay().'" form="reserveParts">';
             $html[] = '</td>';
             continue;
         }
@@ -66,7 +65,7 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
             $html[] = '<button type="submit" class="btn btn-danger p-0 w-75"
-                        name="delete_date" style="font-size:12px"
+                        name="delete_date" style="font-size:12px" form="deleteParts"
                         value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'.
                         $reservePart .'</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
