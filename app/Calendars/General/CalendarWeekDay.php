@@ -86,4 +86,9 @@ class CalendarWeekDay{
      return Auth::user()->reserveSettings->where('setting_reserve', $reserveDate);
    }
 
+   function isCurrentMonth($currentMonth)
+  {
+      return $this->carbon->month == $currentMonth;
+  }
+
 }

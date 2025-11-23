@@ -43,10 +43,18 @@ class CalendarView{
         $today = Carbon::today()->format('Y-m-d');
         $isPast = $day->everyDay() < $today;
 
+        $isCurrentMonth = $day->isCurrentMonth($this->carbon->month);
+
         $tdClass = $isPast ? 'calendar-td bg-light' : 'calendar-td '.$day->getClassName();
         $html[] = '<td class="'.$tdClass.'">';
 
         $html[] = $day->render();
+
+        if(!$isCurrentMonth){
+            $html[] = '<input type="hidden" name="getData[]" value="'.$day->everyDay().'" form="reserveParts">';
+            $html[] = '</td>';
+            continue;
+        }
 
         if(in_array($day->everyDay(), $day->authReserveDay())){
 
