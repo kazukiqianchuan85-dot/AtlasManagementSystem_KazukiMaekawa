@@ -132,7 +132,9 @@ li {
 }
 
 .post_bottom_area {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .like_btn,
@@ -456,4 +458,241 @@ li {
   height: 20px;
   margin-right: 8px;
   filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
+}
+
+/* =========================================
+   投稿一覧（左側）
+========================================= */
+
+.post_view {
+  padding: 30px 0;
+}
+
+.post_area {
+  background: #FFF;
+  border-radius: 12px;
+  padding: 20px;
+  margin-left: 80px;
+  margin-bottom: 5px;
+  width: 85%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.post_area p a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0a66c2;
+  text-decoration: none;
+}
+
+.post_area p a:hover {
+  text-decoration: underline;
+}
+
+.post_bottom_area {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.post_status i {
+  margin-right: 4px;
+  color: #666;
+}
+
+.un_like_btn {
+  color: #E2254D !important;
+}
+
+/* ===== 投稿タグ（サブカテゴリ） ===== */
+
+.post-tags {
+  margin-top: 4px;
+}
+
+.post-tag {
+  display: inline-block;
+  background: #00A7D1;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-right: 6px;
+  margin-top: 4px;
+}
+
+/* =========================================
+   右側（カテゴリ検索）
+========================================= */
+
+.other_area {
+  padding: 20px;
+  background: #FFF;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-right: 20px;
+  height: fit-content;
+}
+
+.other_area input[type="text"] {
+  width: 70%;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.other_area .search-box input[type="submit"] {
+  background: #03AAD2;
+  color: #FFF;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.category-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.category_box_area {
+  border: 1px solid #bbb;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.main_categories {
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+}
+
+.main_categories strong {
+  font-size: 15px;
+}
+
+.main_categories::after {
+  content: "▼";
+  position: absolute;
+  right: 0;
+  top: 5px;
+  font-size: 12px;
+  transition: transform .2s;
+}
+
+.main_categories.open::after {
+  transform: rotate(180deg);
+}
+
+.main_categories ul {
+  display: none;
+  margin-top: 8px;
+}
+
+.main_categories.open ul {
+  display: block;
+}
+
+.main_categories li button {
+  font-size: 13px;
+  padding: 3px 0;
+  color: #0a66c2;
+}
+
+.main_categories li button:hover {
+  text-decoration: underline;
+}
+
+/* 投稿ボタン（見本通りの青） */
+.post-btn {
+  width: 100%;
+  background: #00A7D1;
+  color: #fff;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+/* 検索ボックス */
+.search-box {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.search-box input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+}
+
+.search-box input[type="submit"] {
+  background: #00A7D1;
+  color: #fff;
+  border: none;
+  padding: 0 18px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+/* ★ いいねした投稿（ピンク） */
+.like-filter-btn {
+  width: 48%;
+  background: #EAA2BD;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ★ 自分の投稿（黄色） */
+.my-post-filter-btn {
+  width: 48%;
+  background: #F2C879;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 横並び配置 */
+.filter-btn-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+/* サブカテゴリータグ */
+.tag-badge {
+  display: inline-block;
+  background: #00A7D1;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+/* コメント&いいね を右側に／タグと同じ高さへ */
+.post_bottom_area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
 }
