@@ -696,3 +696,45 @@ li {
   align-items: center;
   margin-top: 12px;
 }
+
+/* ================================
+   新規投稿作成画面（右側カード）
+================================ */
+.category_card {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 450px;
+}
+
+.category_card p {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.category_card input[type="text"],
+.category_card select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.category_card .btn-blue {
+  width: 100%;
+  background: #0288d1;
+  color: #fff;
+  border: none;
+  padding: 8px 0;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* タイトルや投稿内容のエラーメッセージ */
+.error_message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
