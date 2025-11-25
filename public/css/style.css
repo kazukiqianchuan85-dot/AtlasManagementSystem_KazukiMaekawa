@@ -738,3 +738,29 @@ li {
   font-size: 12px;
   margin-bottom: 4px;
 }
+
+/* 編集ボタン（青） */
+.edit-btn {
+  background: #1a73e8;
+  color: #fff !important;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  height: 38px;
+  line-height: 1;
+}
+
+.detail_tag {
+  display: inline-block;
+  background: #00A7D1;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}

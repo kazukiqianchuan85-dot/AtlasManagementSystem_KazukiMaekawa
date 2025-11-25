@@ -3,13 +3,22 @@
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
+        @foreach($post->subCategories as $sub)
+            <span class="detail_tag">{{ $sub->sub_category }}</span>
+        @endforeach
         <div class="detail_inner_head">
           <div>
           </div>
           {{-- 自分の投稿にのみ編集・削除ボタン表示 --}}
           @if (Auth::id() === $post->user_id)
             <div>
-              <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+              <button type="button"
+                      class="edit-modal-open edit-btn"
+                      post_title="{{ $post->post_title }}"
+                      post_body="{{ $post->post }}"
+                      post_id="{{ $post->id }}">
+                編集
+              </button>
               <button type="button"
                       class="btn btn-danger delete-modal-open"
                       data-post-id="{{ $post->id }}">
@@ -49,6 +58,9 @@
   <div class="w-50 p-3">
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
+        @if ($errors->has('comment'))
+            <span class="error_message">{{ $errors->first('comment') }}</span>
+        @endif
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
@@ -96,6 +108,36 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function () {
+
+    // 編集モーダルを開く
+    $('.edit-modal-open').on('click', function() {
+
+        let title = $(this).attr('post_title');
+        let body = $(this).attr('post_body');
+        let postId = $(this).attr('post_id');
+
+        // 値が入っているかコンソールで確認可
+        console.log(title, body, postId);
+
+        // モーダル開く
+        $('.js-modal').fadeIn();
+
+        // 値をセット
+        $('input[name="post_title"]').val(title);
+        $('textarea[name="post_body"]').val(body);
+        $('.edit-modal-hidden').val(postId);
+    });
+
+    // モーダル閉じる
+    $('.js-modal-close').on('click', function() {
+        $('.js-modal').fadeOut();
+    });
+
+});
+</script>
+
 <script>
   // 削除モーダルを開く
   $('.delete-modal-open').on('click', function() {
