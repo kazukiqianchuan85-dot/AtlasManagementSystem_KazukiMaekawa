@@ -764,3 +764,182 @@ li {
   border-radius: 12px;
   margin-bottom: 8px;
 }
+
+/* ============================================
+   ユーザー検索 ー 見本デザイン完全対応
+============================================ */
+
+/* 全体の横並びレイアウト */
+.search_content {
+  display: flex;
+  gap: 35px;
+  padding: 30px;
+  background: #ECF1F6;
+  border: none !important;
+}
+
+/* ==========================
+   左側のカード一覧
+========================== */
+.reserve_users_area {
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3列 */
+  gap: 20px;
+  height: 80vh;
+  overflow-y: scroll;
+  padding-right: 10px;
+  background: none;
+  /* 白背景を削除 */
+  border-radius: 10px;
+}
+
+.one_person {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+  width: 100%;
+  height: 240px;
+}
+
+.one_person span,
+.one_person div {
+  font-size: 13px;
+}
+
+.one_person a {
+  color: #0a66c2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.one_person a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================
+   右側の検索パネル
+========================== */
+.search_area {
+  width: 300px;
+  background: #fff;
+  padding: 25px 25px 35px;
+  border-radius: 12px;
+  height: fit-content;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none !important;
+}
+
+.search_area p,
+.search_area label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.search_area input[type="text"],
+.search_area select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  margin-bottom: 12px;
+}
+
+/* ==========================
+   検索条件の追加（スライド）
+========================== */
+.search_conditions {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ▼（閉じてる時） */
+.search_conditions::after {
+  content: "▼";
+  margin-left: 5px;
+  font-size: 13px;
+  transition: .3s;
+}
+
+/* ▲（開いてる時） */
+.search_conditions.open::after {
+  content: "▲";
+}
+
+.search_conditions.open span::after {
+  transform: rotate(180deg);
+}
+
+.search_conditions_inner {
+  display: none;
+  background: #f7f7f7;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.search_conditions_inner.open {
+  display: block;
+}
+
+.subject-list {
+  margin-top: 8px;
+  padding-left: 5px;
+}
+
+/* ==========================
+   ボタン
+========================== */
+.search_area input[type="submit"],
+.search_area input[type="reset"] {
+  width: 100%;
+  background: #00A7D1;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.search_area input[type="reset"] {
+  background: #bbb;
+  color: #333;
+}
+
+.reset-btn {
+  width: 100%;
+  background: #BDBDBD;
+  /* グレー */
+  color: #333;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* ▼ 選択科目：横並び */
+.subject-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 25px;
+  /* 横：25px、縦：10px */
+  margin-top: 5px;
+}
+
+.subject-item label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
