@@ -943,3 +943,35 @@ li {
   align-items: center;
   gap: 4px;
 }
+
+/* ▼ 選択科目 編集 開閉のボタン */
+.subject_edit_btn {
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1a73e8;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* ▼ 開閉される内部（初期は非表示） */
+.subject_inner {
+  display: none;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* ▼ 横並び（科目 + 登録ボタン） */
+.subject-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.subject-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
