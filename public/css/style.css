@@ -80,6 +80,31 @@ li {
   width: 70%;
 }
 
+/* スクール予約関連 */
+.day-blank {
+  background: #D3D3D3;
+}
+
+/* 土日（管理画面用） */
+.day-sat {
+  color: #0000FF;
+}
+
+.day-sun {
+  color: #FF0000;
+}
+
+/* ▼ ユーザー操作の予約画面：曜日カラー調整 */
+.calendar thead th:nth-child(6) {
+  color: #0000FF !important;
+  /* 土 */
+}
+
+.calendar thead th:nth-child(7) {
+  color: #FF0000 !important;
+  /* 日 */
+}
+
 /* モーダル */
 .modal {
   display: none;
