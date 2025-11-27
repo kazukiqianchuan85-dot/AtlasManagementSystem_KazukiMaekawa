@@ -1,6 +1,5 @@
 <x-sidebar>
     <div class="pt-5" style="background:#ECF1F6; min-height:100vh;">
-        <h2 class="text-center mb-4">＜スクール予約詳細画面＞</h2>
 
         <div class="w-50 m-auto p-4 bg-white border" style="border-radius: 5px;">
 

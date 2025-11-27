@@ -633,7 +633,6 @@ li {
   text-decoration: underline;
 }
 
-/* 投稿ボタン（見本通りの青） */
 .post-btn {
   width: 100%;
   background: #00A7D1;
@@ -647,7 +646,6 @@ li {
   cursor: pointer;
 }
 
-/* 検索ボックス */
 .search-box {
   display: flex;
   margin-bottom: 16px;
@@ -670,7 +668,6 @@ li {
   cursor: pointer;
 }
 
-/* ★ いいねした投稿（ピンク） */
 .like-filter-btn {
   width: 48%;
   background: #EAA2BD;
@@ -683,7 +680,6 @@ li {
   cursor: pointer;
 }
 
-/* ★ 自分の投稿（黄色） */
 .my-post-filter-btn {
   width: 48%;
   background: #F2C879;
@@ -696,14 +692,12 @@ li {
   cursor: pointer;
 }
 
-/* 横並び配置 */
 .filter-btn-wrap {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
 }
 
-/* サブカテゴリータグ */
 .tag-badge {
   display: inline-block;
   background: #00A7D1;
@@ -714,7 +708,6 @@ li {
   margin-right: 6px;
 }
 
-/* コメント&いいね を右側に／タグと同じ高さへ */
 .post_bottom_area {
   display: flex;
   justify-content: space-between;
@@ -723,7 +716,7 @@ li {
 }
 
 /* ================================
-   新規投稿作成画面（右側カード）
+   新規投稿作成画面
 ================================ */
 .category_card {
   background: #fff;
@@ -757,14 +750,12 @@ li {
   cursor: pointer;
 }
 
-/* タイトルや投稿内容のエラーメッセージ */
 .error_message {
   color: red;
   font-size: 12px;
   margin-bottom: 4px;
 }
 
-/* 編集ボタン（青） */
 .edit-btn {
   background: #1a73e8;
   color: #fff !important;
@@ -791,10 +782,9 @@ li {
 }
 
 /* ============================================
-   ユーザー検索 ー 見本デザイン完全対応
+   ユーザー検索
 ============================================ */
 
-/* 全体の横並びレイアウト */
 .search_content {
   display: flex;
   gap: 35px;
@@ -810,13 +800,11 @@ li {
   width: 70%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* 3列 */
   gap: 20px;
   height: 80vh;
   overflow-y: scroll;
   padding-right: 10px;
   background: none;
-  /* 白背景を削除 */
   border-radius: 10px;
 }
 
@@ -943,7 +931,6 @@ li {
 .reset-btn {
   width: 100%;
   background: #BDBDBD;
-  /* グレー */
   color: #333;
   padding: 12px 0;
   border: none;
@@ -954,12 +941,10 @@ li {
   margin-top: 10px;
 }
 
-/* ▼ 選択科目：横並び */
 .subject-list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 25px;
-  /* 横：25px、縦：10px */
   margin-top: 5px;
 }
 
@@ -969,7 +954,6 @@ li {
   gap: 4px;
 }
 
-/* ▼ 選択科目 編集 開閉のボタン */
 .subject_edit_btn {
   font-size: 14px;
   font-weight: bold;
@@ -979,7 +963,6 @@ li {
   margin-bottom: 10px;
 }
 
-/* ▼ 開閉される内部（初期は非表示） */
 .subject_inner {
   display: none;
   padding: 15px;
@@ -988,7 +971,6 @@ li {
   margin-top: 10px;
 }
 
-/* ▼ 横並び（科目 + 登録ボタン） */
 .subject-items {
   display: flex;
   align-items: center;
@@ -1005,7 +987,6 @@ li {
    予約確認画面（管理者用）デザイン調整
 ================================ */
 
-/* ▼ 白い大枠（予約画面と統一） */
 .calendar-wrapper {
   background: #FFF;
   padding: 30px 40px;
@@ -1016,7 +997,6 @@ li {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* ▼ 月タイトル（中央で大きく） */
 .calendar-title {
   text-align: center;
   font-size: 26px;
@@ -1025,18 +1005,14 @@ li {
   color: #333;
 }
 
-/* ▼ 土日の “〇日” の文字色 */
 .day-sat .day {
   color: #0000FF !important;
-  /* 青 */
 }
 
 .day-sun .day {
   color: #FF0000 !important;
-  /* 赤 */
 }
 
-/* ▼ テーブル全体を白枠内で整える */
 .calendar table {
   width: 100%;
   background: #FFF;
@@ -1047,11 +1023,21 @@ li {
   padding: 10px 0 !important;
 }
 
-/* ▼ 見本と同じ淡いグレー背景 */
 .day-blank {
   background: #E0E0E0 !important;
 }
 
 .past-day {
   background: #F0F0F0 !important;
+}
+
+/* 予約詳細画面 */
+.table thead th {
+  background: #00A7D1 !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+  background: #EAF7FC !important;
 }
