@@ -18,17 +18,19 @@ class CalendarView{
 
   function render(){
     $html = [];
+    $html[] = '<div class="calendar-wrapper">';
+    $html[] = '<h2 class="calendar-title">'.$this->getTitle().'</h2>';
     $html[] = '<div class="calendar text-center">';
-    $html[] = '<table class="table">';
+    $html[] = '<table class="table m-auto border">';
     $html[] = '<thead>';
     $html[] = '<tr>';
-    $html[] = '<th>月</th>';
-    $html[] = '<th>火</th>';
-    $html[] = '<th>水</th>';
-    $html[] = '<th>木</th>';
-    $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="border">月</th>';
+    $html[] = '<th class="border">火</th>';
+    $html[] = '<th class="border">水</th>';
+    $html[] = '<th class="border">木</th>';
+    $html[] = '<th class="border">金</th>';
+    $html[] = '<th class="border day-sat">土</th>';
+    $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -45,7 +47,7 @@ class CalendarView{
 
         $isCurrentMonth = $day->isCurrentMonth($this->carbon->month);
 
-        $tdClass = $isPast ? 'calendar-td bg-light' : 'calendar-td '.$day->getClassName();
+        $tdClass = 'calendar-td '.$day->getClassName().($isPast ? ' bg-light' : '');
         $html[] = '<td class="'.$tdClass.'">';
 
         $html[] = $day->render();
@@ -89,6 +91,7 @@ class CalendarView{
 
     $html[] = '</tbody>';
     $html[] = '</table>';
+    $html[] = '</div>';
     $html[] = '</div>';
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">'.csrf_field().'</form>';
     $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().'</form>';

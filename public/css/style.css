@@ -1015,14 +1015,6 @@ li {
   color: #333;
 }
 
-.day-sat .day {
-  color: #0000FF !important;
-}
-
-.day-sun .day {
-  color: #FF0000 !important;
-}
-
 .calendar table {
   width: 100%;
   background: #FFF;
@@ -1050,4 +1042,24 @@ li {
 
 .table tbody tr:nth-child(even) {
   background: #EAF7FC !important;
+}
+
+td.day-sat .day,
+.calendar-td.day-sat .day,
+.day-sat {
+  color: #0000FF !important;
+}
+
+td.day-sun .day,
+.calendar-td.day-sun .day,
+.day-sun {
+  color: #FF0000 !important;
+}
+
+.calendar thead th:nth-child(6) {
+  color: #0000FF !important;
+}
+
+.calendar thead th:nth-child(7) {
+  color: #FF0000 !important;
 }
