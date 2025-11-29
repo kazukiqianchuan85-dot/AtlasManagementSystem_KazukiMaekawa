@@ -23,11 +23,17 @@ class PostFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'post_category_id' => 'required|exists:sub_categories,id',
+        $rules = [
             'post_title' => 'required|string|max:100',
-            'post_body' => 'required|string|max:2000',
+            'post_body'  => 'required|string|max:2000',
         ];
+
+        // 作成時（URL が post/create のとき）だけカテゴリー必須
+        if ($this->route()->getName() === 'post.create') {
+            $rules['post_category_id'] = 'required|exists:sub_categories,id';
+        }
+
+        return $rules;
     }
 
     public function messages(){

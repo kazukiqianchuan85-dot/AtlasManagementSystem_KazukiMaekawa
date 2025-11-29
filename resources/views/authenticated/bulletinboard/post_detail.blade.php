@@ -70,27 +70,58 @@
     </div>
   </div>
 </div>
+<!-- 編集モーダル -->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
     <form action="{{ route('post.edit') }}" method="post">
+      @csrf
+
+      {{-- ★ バリデーションエラー表示 --}}
+      @if ($errors->any())
+        <div style="color:red; margin-bottom:10px;">
+          @foreach ($errors->all() as $error)
+            <p class="m-0">{{ $error }}</p>
+          @endforeach
+        </div>
+      @endif
+
       <div class="w-100">
+
         <div class="modal-inner-title w-50 m-auto">
-          <input type="text" name="post_title" placeholder="タイトル" class="w-100">
+          <input type="text"
+                 name="post_title"
+                 class="w-100"
+                 placeholder="タイトル"
+                 value="{{ old('post_title') }}">
         </div>
+
         <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
-          <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
+          <textarea class="w-100"
+                    name="post_body"
+                    placeholder="投稿内容">{{ old('post_body') }}</textarea>
         </div>
+
         <div class="w-50 m-auto edit-modal-btn d-flex">
-          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-          <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
-          <input type="submit" class="btn btn-primary d-block" value="編集">
+
+          <a class="js-modal-close btn btn-danger d-inline-block">閉じる</a>
+
+          <input type="hidden"
+                 class="edit-modal-hidden"
+                 name="post_id"
+                 value="{{ old('post_id') }}">
+
+          <input type="submit"
+                 class="btn btn-primary d-block"
+                 value="編集">
+
         </div>
       </div>
-      {{ csrf_field() }}
+
     </form>
   </div>
 </div>
+
 {{-- 削除確認モーダル --}}
 <div class="modal js-delete-modal">
   <div class="modal__bg js-delete-modal-close"></div>
@@ -114,20 +145,14 @@ $(function () {
     // 編集モーダルを開く
     $('.edit-modal-open').on('click', function() {
 
-        let title = $(this).attr('post_title');
-        let body = $(this).attr('post_body');
-        let postId = $(this).attr('post_id');
+        // old()が無い場合だけ、JSで値をセット
+        if ($('input[name="post_title"]').val() === "") {
+            $('input[name="post_title"]').val($(this).attr('post_title'));
+            $('textarea[name="post_body"]').val($(this).attr('post_body'));
+            $('.edit-modal-hidden').val($(this).attr('post_id'));
+        }
 
-        // 値が入っているかコンソールで確認可
-        console.log(title, body, postId);
-
-        // モーダル開く
         $('.js-modal').fadeIn();
-
-        // 値をセット
-        $('input[name="post_title"]').val(title);
-        $('textarea[name="post_body"]').val(body);
-        $('.edit-modal-hidden').val(postId);
     });
 
     // モーダル閉じる
@@ -137,6 +162,7 @@ $(function () {
 
 });
 </script>
+
 
 <script>
   // 削除モーダルを開く
@@ -152,4 +178,12 @@ $(function () {
     $('.js-delete-modal').fadeOut();
   });
 </script>
+@if ($errors->any())
+<script>
+$(function() {
+    $('.js-modal').fadeIn();
+});
+</script>
+@endif
+
 </x-sidebar>
