@@ -76,7 +76,7 @@
         </select>
       </div>
       <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
+        <p class="m-0 search_conditions">検索条件の追加</p>
         <div class="search_conditions_inner">
           <div>
             <label>性別</label><br>
@@ -123,10 +123,29 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-  // ▼検索条件の追加（スライド開閉）
-  $(".search_conditions").on("click", function () {
-      $(this).toggleClass("open");
-      $(".search_conditions_inner").toggleClass("open");
+    $(document).ready(function() {
+        $(".search_conditions_inner").hide().removeClass("open");
+        $(".search_conditions").removeClass("open");
+    });
+</script>
+
+<script>
+  $(function () {
+      // イベントハンドラの設定
+      $(".search_conditions").off("click").on("click", function (e) {
+          // デフォルトのイベント（もしあれば）とバブリングを停止
+          e.preventDefault();
+          e.stopPropagation();
+
+          // タイトル（pタグ）の open クラスをトグル
+          $(this).toggleClass("open");
+
+          // アニメーションを停止し、すぐに開始・終了できるように制御して slideToggle を実行
+          // stop(clearQueue, jumpToEnd) の両方を true に設定
+          $(this).next(".search_conditions_inner").stop(true, true).slideToggle(300); // 300msでアニメーション
+      });
   });
 </script>
+
+
 </x-sidebar>

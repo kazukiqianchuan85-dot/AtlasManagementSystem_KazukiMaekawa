@@ -100,7 +100,7 @@ li {
   color: #FF0000;
 }
 
-/* ▼ ユーザー操作の予約画面：曜日カラー調整 */
+/* ユーザー操作の予約画面：曜日カラー調整 */
 .calendar thead th:nth-child(6) {
   color: #0000FF !important;
   /* 土 */
@@ -290,15 +290,6 @@ li {
 .one_person {
   width: 250px;
   height: 250px;
-}
-
-.search_conditions span {
-  cursor: pointer;
-}
-
-.search_conditions_inner {
-  display: none;
-  background: #FFF;
 }
 
 .subject_edit_btn {
@@ -896,12 +887,9 @@ li {
   content: "▲";
 }
 
-.search_conditions.open span::after {
-  transform: rotate(180deg);
-}
-
+/* search_conditions_inner から以下の行を削除またはコメントアウト */
 .search_conditions_inner {
-  display: none;
+  /* display: none;  <-- これを削除 */
   background: #f7f7f7;
   padding: 12px;
   border-radius: 10px;
@@ -909,7 +897,7 @@ li {
 }
 
 .search_conditions_inner.open {
-  display: block;
+  /* display: block; <-- これも削除 */
 }
 
 .subject-list {
