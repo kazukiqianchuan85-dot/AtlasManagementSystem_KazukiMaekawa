@@ -426,7 +426,32 @@ li {
 }
 
 .register-select-area select {
-  margin-right: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #1a73e8;
+
+  padding: 6px 4px;
+  font-size: 14px;
+  outline: none;
+
+  width: 50px;
+  margin-right: 12px;
+
+  cursor: pointer;
+
+  background-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='black'>\<polygon points='0,0 12,0 6,7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  background-size: 12px;
+}
+
+.register-select-area span,
+.register-select-area label {
+  font-size: 14px;
 }
 
 .register-btn {
