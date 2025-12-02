@@ -92,6 +92,9 @@ class CalendarView{
     $html[] = '</tbody>';
     $html[] = '</table>';
     $html[] = '</div>';
+    $html[] = '<div style="text-align:right; margin-top:25px;">';
+    $html[] = '<input type="submit" class="btn btn-primary" value="予約する" form="reserveParts">';
+    $html[] = '</div>';
     $html[] = '</div>';
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">'.csrf_field().'</form>';
     $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().'</form>';
